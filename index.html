@@ -1,44 +1,242 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-	<!-- Titulo que aparecera en la pestaña del navegador. -->
-    <title> Pagina de Alfonso - unir</title>    
-	<style>
-		h1 { font-family: cursive;  /* Tipo de letra*/
-		 font-size: 40px; 			/* Tamaño del texto*/
-		 text-align: center; 		/* Ubucacion del texto*/
-		 color: darkblue;			/* Cambia el color de todo el texto */
-		}
-	
-	.Primer_Parrafo {
-					font-family: sans-serif;
-					max-width: 600px;
-					margin: 0 auto;
-					text-align: justify
-				}
-		body {
-				background: linear-gradient(to right, #00FF00, #999B9B); /* Degradado azul claro a azul oscuro */
-				color: black;
-			}
-	</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog de HTML e Informática</title>
+  <style>
+    :root {
+      --primary-color: #003366;
+      --secondary-color: #005599;
+      --light-bg: #ffffff;
+      --dark-bg: #121212;
+      --light-text: #333;
+      --dark-text: #f0f0f0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--light-bg);
+      color: var(--light-text);
+      transition: background 0.4s ease, color 0.4s ease;
+      scroll-behavior: smooth;
+    }
+
+    body.dark-mode {
+      background: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    header {
+      background: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 2.5em;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      background: var(--secondary-color);
+    }
+
+    nav a {
+      color: white;
+      padding: 12px 18px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    nav a:hover {
+      background: var(--primary-color);
+    }
+
+    .toggle-dark {
+      margin: 10px auto;
+      text-align: center;
+    }
+
+    .toggle-dark button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background: #0080ff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .toggle-dark button:hover {
+      background: #005fcc;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: background 0.4s;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    body.dark-mode section {
+      background: rgba(33, 33, 33, 0.95);
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    h2 {
+      color: var(--primary-color);
+    }
+
+    .articles article {
+      margin-bottom: 30px;
+    }
+
+    .gallery img {
+      width: 100%;
+      max-width: 300px;
+      margin: 10px;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    iframe {
+      width: 100%;
+      height: 315px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    footer {
+      background: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #aaddff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+
+      .gallery {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
-	<h1>Bienvenido a mi sitio web</h1>
-	<div class="Primer_Parrafo">
-		<p> Esta es mi primera interacción con HTML, un lenguaje que despierta en mí mucha curiosidad e interés.
-			Espero que sea solo el inicio de un largo camino de aprendizaje,
-			en el cual cada experiencia sea más enriquecedora,
-			clara y de mejor calidad. Estoy entusiasmado por descubrir todo lo que HTML puede ofrecer
-			y deseo que cada nuevo paso me acerque a desarrollar proyectos cada vez más majos y bien estructurados.</p>
-			
-	<img src="imag1-html.jfif" alt="Imagen decorativa de bienvenida">
-	<img src="3HTML.png" alt="Imagen decorativa de bienvenida">
-	<iframe width="560" height="315"
-			src="https://www.youtube.com/embed/10GHKjgQIR0?si=YOSVsIGahyxMu0yR"
-			title="YouTube video player"
-			frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-			referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-	</iframe>
-	</body>
+
+  <header>
+    Blog de HTML e Informática
+  </header>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#articulos">Artículos</a>
+    <a href="#video">Video</a>
+    <a href="#galeria">Galería</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <div class="toggle-dark">
+    <button onclick="toggleDarkMode()">🌗 Cambiar modo</button>
+  </div>
+
+  <section id="inicio">
+    <h2>Bienvenido</h2>
+    <p>
+      ¡Hola! Este es un blog dedicado al fascinante mundo del desarrollo web y la informática.
+      Aquí encontrarás artículos, videos y recursos útiles para aprender sobre HTML, CSS y conceptos básicos
+      de computación. Ideal para estudiantes, autodidactas y curiosos tecnológicos.
+    </p>
+    <p><strong>Este sitio fue creado por Juan Camilo Morales López y Alfonso Narváez Rada.</strong></p>
+  </section>
+
+  <section id="articulos" class="articles">
+    <h2>Artículos destacados</h2>
+    <article>
+      <h3>¿Qué es HTML?</h3>
+      <p>
+        HTML es el lenguaje base para crear sitios web. Nos permite estructurar contenido, desde títulos hasta formularios.
+      </p>
+    </article>
+    <article>
+      <h3>Fundamentos de Informática</h3>
+      <p>
+        La informática abarca el estudio de los sistemas que procesan datos: hardware, software, redes, IA y más.
+      </p>
+    </article>
+    <article>
+      <h3>Primeros pasos con CSS</h3>
+      <p>
+        CSS permite darle estilo y diseño a las páginas HTML, creando interfaces atractivas e interactivas.
+      </p>
+    </article>
+  </section>
+
+  <section id="video">
+    <h2>Video educativo</h2>
+    <iframe src="https://www.youtube.com/embed/10GHKjgQIR0?si=YOSVsIGahyxMu0yR" 
+      title="Introducción a HTML" 
+      allowfullscreen>
+    </iframe>
+  </section>
+
+  <section id="galeria" class="gallery">
+    <h2>Galería</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+      <img src="imag1-html.jfif" alt="Imagen HTML">
+      <img src="3HTML.png" alt="Código HTML visual">
+    </div>
+  </section>
+
+<footer id="contacto">
+  <p>Contacto: <a href="https://unir.edu.co/" target="_blank">UNIR.EDU.CO</a></p>
+  <p>Síguenos en redes: 
+    <a href="https://www.instagram.com/uniruniversidad/" target="_blank">Instagram</a> | 
+    <a href="https://www.linkedin.com/school/college-of-nursing-calcutta-national-medical-college/" target="_blank">LinkedIn</a>
+  </p>
+  <p><strong>Desarrollado por Juan Camilo Morales López y Alfonso Narváez Rada</strong></p>
+  <p>&copy; 2025 - Blog de HTML e Informática</p>
+</footer>
+
+
+  <script>
+    // Alternar modo oscuro
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
 </html>
